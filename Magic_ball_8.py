@@ -1,11 +1,16 @@
 from random import choice
 from time import sleep
+
+# Потенциальные ответы
 answers = ['Бесспорно', 'Предрешено', 'Никаких сомнений', 'Определённо да', 'Можешь быть уверен в этом', 'Мне кажется - да', 'Вероятнее всего', 'Хорошие перспективы', 'Знаки говорят - да', 'Да', 'Пока неясно, попробуй снова', 'Спроси позже', 'Лучше не рассказывать', 'Сейчас нельзя предсказать', 'Сконцентрируйся и спроси опять', 'Даже не думай', 'Мой ответ - нет', 'По моим данным - нет', 'Перспективы не очень хорошие', 'Весьма сомнительно']
 
-flag = True
+flag, flag1 = True, True
+
+# Вариации ответа пользователя на вопросы программы
 yes = ["да", "lf", 'yes', 'нуы']
 no = ['нет', 'ytn', 'no', 'тщ']
 
+# Предсказание
 def prediction():
     question = input('Какой у тебя ко мне вопрос?\n')
     print('\n' + choice(answers))
@@ -16,14 +21,16 @@ print('\n\nПривет,', name)
 
 while flag:
     prediction()
-    one_more_time = input('\n\nХочешь задать ещё вопрос?   ')
-    if one_more_time.lower() in yes:
-        print('\n\n')
-        continue
-    elif one_more_time.lower() in no:
-        print('Возвращайся если возникнут вопросы!')
-        sleep(2)
-        flag = False
-    
-    
-    
+    while flag1:
+        one_more_time = input('\nХочешь задать ещё вопрос?   ')
+        if one_more_time.lower() in yes:
+            print('\n\n')
+            break
+        elif one_more_time.lower() in no:
+            print('Возвращайся если возникнут вопросы!')
+            sleep(2)
+            flag1 = False
+            flag = False
+        else:
+            print('\nЯ тебя не понял.')
+            continue
